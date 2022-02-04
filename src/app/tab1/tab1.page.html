@@ -4,6 +4,7 @@
       Tab 1
     </ion-title>
   </ion-toolbar>
+  <ion-searchbar (ionChange)='searchRestaurant()' debounce='250' [(ngModel)]='search'></ion-searchbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
@@ -11,7 +12,20 @@
     <ion-toolbar>
       <ion-title size="large">Tab 1</ion-title>
     </ion-toolbar>
-  </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  </ion-header>
+  <ion-card *ngFor='let restaurant of restaurants' [routerLink]='"/restaurants/" + restaurant.id'>
+    <img class="img-max-height" [src]='restaurant.cover' />
+    <ion-card-header>
+      <ion-card-subtitle>{{restaurant.address}}</ion-card-subtitle>
+      <ion-card-title>{{restaurant.name}}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+     {{restaurant.companyType}} <br>
+     {{restaurant.payoff}}
+    </ion-card-content>
+  </ion-card>
+<!--
+  <app-explore-container name="Tab 1 page"></app-explore-container> -->
 </ion-content>

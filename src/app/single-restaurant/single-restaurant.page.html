@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{restaurant?.name}}</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <img class="img-max-height" [src]='restaurant?.cover' />
+    <ion-card-header>
+      <ion-card-subtitle>{{restaurant?.address}}</ion-card-subtitle>
+      <ion-card-title>{{restaurant?.name}}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+     {{restaurant?.companyType}} <br>
+     {{restaurant?.payoff}}
+    </ion-card-content>
+  </ion-card>
+  <ion-item-group *ngFor='let section of restaurant?.sections'>
+    <ion-item-divider>
+      <ion-label>{{section.name}}</ion-label>
+    </ion-item-divider>
+
+    <ion-item *ngFor='let dish of section.dishes'>
+      <ion-label>{{dish.title}}</ion-label>
+      <ion-note slot="error">{{dish.price}}</ion-note>
+    </ion-item>
+  </ion-item-group>
+</ion-content>
